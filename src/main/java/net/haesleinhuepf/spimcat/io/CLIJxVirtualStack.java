@@ -6,7 +6,7 @@ import ij.plugin.Duplicator;
 import ij.plugin.HyperStackConverter;
 import ij.process.ImageProcessor;
 import net.haesleinhuepf.clij.clearcl.ClearCLBuffer;
-import net.haesleinhuepf.clijx.CLIJx;
+import net.haesleinhuepf.clij2.CLIJ2;
 
 public class CLIJxVirtualStack extends VirtualStack {
     public enum ProjectionStyle {
@@ -70,8 +70,8 @@ public class CLIJxVirtualStack extends VirtualStack {
 
             formerSliceProcessors = new ImageProcessor[buffer.length];
 
-            CLIJx clijx = CLIJx.getInstance();
-            ClearCLBuffer slice = clijx.create(new long[]{buffer[0].getWidth(), buffer[0].getHeight()}, buffer[0].getNativeType());
+            CLIJ2 clij2 = CLIJ2.getInstance();
+            ClearCLBuffer slice = clij2.create(new long[]{buffer[0].getWidth(), buffer[0].getHeight()}, buffer[0].getNativeType());
             ClearCLBuffer backup = null;
 
             //System.out.println("Buffer " + buffer);
@@ -83,44 +83,44 @@ public class CLIJxVirtualStack extends VirtualStack {
                 System.out.println("Channel " + c);
                 if (buffer[c].getPeerPointer() != null) { // Workaround: This can happen if visualization happens during reset
                     if (projectionStyle == ProjectionStyle.MAXIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT || projectionStyle == ProjectionStyle.MINIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT) {
-                        backup = clijx.create(new long[]{buffer[0].getWidth(), buffer[0].getHeight()}, buffer[0].getNativeType());
-                        clijx.copySlice(buffer[c], backup, zplane);
-                        clijx.multiplyImageAndScalar(backup, slice, projectionStyle == ProjectionStyle.MAXIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT?2:0.5);
-                        clijx.copySlice(slice, buffer[c], zplane);
+                        backup = clij2.create(new long[]{buffer[0].getWidth(), buffer[0].getHeight()}, buffer[0].getNativeType());
+                        clij2.copySlice(buffer[c], backup, zplane);
+                        clij2.multiplyImageAndScalar(backup, slice, projectionStyle == ProjectionStyle.MAXIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT?2:0.5);
+                        clij2.copySlice(slice, buffer[c], zplane);
                     }
                     switch (projectionStyle) {
                         case MAXIMUM_INTENSITY:
                         case MAXIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT:
-                            clijx.maximumZProjection(buffer[c], slice);
+                            clij2.maximumZProjection(buffer[c], slice);
                             break;
                         case MINIMUM_INTENSITY:
                         case MINIMUM_INTENSITY_WITH_SLICE_HIGHLIGHT:
-                            clijx.minimumZProjection(buffer[c], slice);
+                            clij2.minimumZProjection(buffer[c], slice);
                             break;
                         case MEAN_INTENSITY:
-                            clijx.meanZProjection(buffer[c], slice);
+                            clij2.meanZProjection(buffer[c], slice);
                             break;
                         case SUM_INTENSITY:
-                            clijx.sumZProjection(buffer[c], slice);
+                            clij2.sumZProjection(buffer[c], slice);
                             break;
                         case MEDIAN_INTENSITY:
-                            clijx.medianZProjection(buffer[c], slice);
+                            clij2.medianZProjection(buffer[c], slice);
                             break;
                         case STANDARD_DEVIATION_INTENSITY:
-                            clijx.standardDeviationZProjection(buffer[c], slice);
+                            clij2.standardDeviationZProjection(buffer[c], slice);
                             break;
                         case EXTENDED_DEPTH_OF_FOCUS_VARIANCE:
-                            clijx.extendedDepthOfFocusVarianceProjection(buffer[c], slice, 10);
+                            clij2.extendedDepthOfFocusVarianceProjection(buffer[c], slice, 10);
                             break;
                         case SINGLE_SLICE:
                         default:
-                            clijx.copySlice(buffer[c], slice, zplane);
+                            clij2.copySlice(buffer[c], slice, zplane);
                     }
                     if (backup != null) {
-                        clijx.copySlice(backup, buffer[c], zplane);
+                        clij2.copySlice(backup, buffer[c], zplane);
                     }
                 }
-                ImagePlus imp = clijx.pull(slice);
+                ImagePlus imp = clij2.pull(slice);
                 formerSliceProcessors[c] = imp.getProcessor();
             }
 
@@ -166,7 +166,7 @@ public class CLIJxVirtualStack extends VirtualStack {
     }
 
     public static ClearCLBuffer[] imagePlusToBuffer(ImagePlus imp) {
-        CLIJx clijx = CLIJx.getInstance();
+        CLIJ2 clij2 = CLIJ2.getInstance();
         ImageStack stack = imp.getStack();
         if (stack instanceof CLIJxVirtualStack) {
             ClearCLBuffer[] copy = new ClearCLBuffer[((CLIJxVirtualStack) stack).getNumberOfChannels()];
@@ -193,18 +193,18 @@ public class CLIJxVirtualStack extends VirtualStack {
                         */
                         ImageProcessor processor = imp_stack.getProcessor(t * imp.getNChannels() * imp.getNSlices() + z * imp.getNChannels() + c + 1);
                         ImagePlus a_slice = new ImagePlus("", processor);
-                        ClearCLBuffer b_slice = clijx.push(a_slice);
+                        ClearCLBuffer b_slice = clij2.push(a_slice);
                         if (all[c] == null) {
                             if (imp.getNSlices() > 1) {
-                                all[c] = clijx.create(new long[]{b_slice.getWidth(), b_slice.getHeight(), imp.getNSlices()}, b_slice.getNativeType());
+                                all[c] = clij2.create(new long[]{b_slice.getWidth(), b_slice.getHeight(), imp.getNSlices()}, b_slice.getNativeType());
                             } else {
-                                all[c] = clijx.create(new long[]{b_slice.getWidth(), b_slice.getHeight()}, b_slice.getNativeType());
+                                all[c] = clij2.create(new long[]{b_slice.getWidth(), b_slice.getHeight()}, b_slice.getNativeType());
                             }
                         }
                         if (imp.getNSlices() > 1) {
-                            clijx.copySlice(b_slice, all[c], z);
+                            clij2.copySlice(b_slice, all[c], z);
                         } else {
-                            clijx.copy(b_slice, all[c]);
+                            clij2.copy(b_slice, all[c]);
                         }
                         b_slice.close();
                     }
@@ -213,7 +213,7 @@ public class CLIJxVirtualStack extends VirtualStack {
             } else {
                 //Roi roi = imp.getRoi();
                 //imp.killRoi();
-                ClearCLBuffer[] buffer = new ClearCLBuffer[]{clijx.pushCurrentZStack(imp)};
+                ClearCLBuffer[] buffer = new ClearCLBuffer[]{clij2.pushCurrentZStack(imp)};
                 //imp.setRoi(roi);
                 return buffer;
             }

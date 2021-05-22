@@ -1,6 +1,6 @@
 package net.haesleinhuepf.clijx.assistant;
 
-import net.haesleinhuepf.clijx.assistant.services.UsageAnalyser;
+import net.haesleinhuepf.clij2.assistant.services.UsageAnalyser;
 
 import java.io.File;
 import java.io.FileWriter;

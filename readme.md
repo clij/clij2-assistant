@@ -26,40 +26,22 @@ Stay tuned.
 * Filtering / correction
   * [Image filtering](https://clij.github.io/assistant/filtering)
   * [Gamma correction](https://clij.github.io/assistant/gamma_correction)
-  * [Drift correction](https://clij.github.io/assistant/drift_correction)
 
 * Transformation
   * [Intensity projection](https://clij.github.io/assistant/intensity_projection)
   * [Crop, Pan & zoom](https://clij.github.io/assistant/crop_pan_zoom)
   * [Cylinder projection](https://clij.github.io/assistant/cylinder_projection)
   * [Sphere projection](https://clij.github.io/assistant/sphere_projection)
-  * [Drift correction](https://clij.github.io/assistant/drift_correction)
 
 * Regionalisation
   * [Nuclei segmentation](https://clij.github.io/assistant/segmentation_nuclei)
   * [Cell segmentation based on membranes](https://clij.github.io/assistant/segmentation_cells)
   * [Optimize parameters for binarization](https://clij.github.io/assistant/parameter_optimization)
-  * [Label classification](https://clij.github.io/assistant/clijx_weka_label_classifier)
 
 * Reproducibility / interoperability
   * [Export workflows as ImageJ Script](https://clij.github.io/assistant/macro_export)
   * [Export human readable protocols and ImageJ Macro Markdown notebooks](https://clij.github.io/assistant/supplementary_methods_section_generator)
-  * [Generate CLIJx / Fiji plugins](https://clij.github.io/assistant/generate_clijx_plugins)
   * [Export as Icy Protocol](https://clij.github.io/assistant/icy_protocol_export)
-  * [Export Groovy Script for QuPath](https://clij.github.io/assistant/export_to_clupath)
-  * [Export workflows as Python script using clEsperanto and Napari](https://clij.github.io/assistant/te_oki_export)
-
-* [Reference](https://clij.github.io/assistant/reference)
-
-* Extensibility
-  * [CLIJ2 Plugin template](https://github.com/clij/clij2-plugin-template)
-  * [CLIJ2 imglib2 extensions](https://github.com/clij/clijx-assistant-imglib2)
-  * [CLIJ2 ImageJ extensions](https://github.com/clij/clijx-assistant-imagej)
-  * [CLIJ2 ImageJ2 extensions](https://github.com/clij/clijx-assistant-imagej2)
-  * [CLIJ2 BoneJ extensions](https://github.com/clij/clijx-assistant-bonej)
-  * [CLIJ2 MorphoLibJ extensions](https://github.com/clij/clijx-assistant-morpholibj)
-  * [CLIJ2 ImageJ 3D Suite extensions](https://github.com/clij/clijx-assistant-imagej3dsuite)
-  * [CLIJ2 SimpleITK extensions](https://github.com/clij/clijx-assistant-simpleitk)
 
 ## Acknowledgements
 We would like to thank everybody who helped developing, testing and motivating this project. In particular thanks go to 
@@ -98,6 +80,6 @@ Furthermore, the constant support by the Image Science and the NEUBIAS communiti
 This work was supported by the German Federal Ministry of Research and Education (BMBF) under the code 031L0044 (Sysbio II).
 
 ## Feedback welcome!
-I'm eager to receiving feedback: rhaase at mpi minus cbg dot de
+I'm eager to receiving feedback: robert dot haase at tu minus dresden dot de
 
 [Imprint](https://clij.github.io/imprint)

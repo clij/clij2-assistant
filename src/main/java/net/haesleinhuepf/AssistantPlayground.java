@@ -6,15 +6,9 @@ import ij.ImagePlus;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
 import net.haesleinhuepf.clij2.plugins.*;
-import net.haesleinhuepf.clij2.plugins.CylinderTransform;
-import net.haesleinhuepf.clij2.plugins.MakeIsotropic;
-import net.haesleinhuepf.clijx.CLIJx;
-import net.haesleinhuepf.clijx.assistant.interactive.generic.GenericAssistantGUIPlugin;
-import net.haesleinhuepf.clijx.assistant.interactive.handcrafted.*;
-import net.haesleinhuepf.clijx.assistant.utilities.AssistantUtilities;
-import net.haesleinhuepf.clijx.gui.MemoryDisplay;
-import net.haesleinhuepf.clijx.assistant.AssistantGUIStartingPoint;
-import net.haesleinhuepf.clijx.plugins.VisualizeOutlinesOnOriginal;
+import net.haesleinhuepf.clij2.assistant.interactive.generic.GenericAssistantGUIPlugin;
+import net.haesleinhuepf.clij2.assistant.AssistantGUIStartingPoint;
+import net.haesleinhuepf.clij2.CLIJ2;
 
 import java.io.FileNotFoundException;
 
@@ -22,7 +16,7 @@ public class AssistantPlayground implements PlugInFilter {
 
     public static void main(String... args) throws FileNotFoundException {
         new ImageJ();
-        CLIJx.getInstance("RTX");
+        CLIJ2.getInstance("RTX");
 
         //new MemoryDisplay().run(null);
         //AssistantUtilities.installTools();
