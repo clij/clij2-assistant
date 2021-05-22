@@ -33,7 +33,7 @@ public class AssistantGUIStartingPoint extends AbstractAssistantGUIPlugin {
         Toolbar.addPlugInTool(new InteractiveWindowPosition());
 
         if (IJ.getImage().getStack() instanceof CLIJxVirtualStack) {
-            IJ.error("This image is managed by CLIJx-Assistant already.");
+            IJ.error("This image is managed by CLIJ2-Assistant already.");
             return;
         }
         AssistantGUIPluginRegistry.getInstance().register(this);
@@ -90,7 +90,7 @@ public class AssistantGUIStartingPoint extends AbstractAssistantGUIPlugin {
         input.close();
         args = new Object[]{input, result[0]};
 
-        my_target.setTitle("CLIJx Image of " + my_sources[0].getTitle());
+        my_target.setTitle("CLIJ2 Image of " + my_sources[0].getTitle());
         refreshView();
         enhanceContrast();
     }
