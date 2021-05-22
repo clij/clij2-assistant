@@ -1614,7 +1614,7 @@ public abstract class AbstractAssistantGUIPlugin implements ImageListener, PlugI
         registered_dialog.invalidate();
     }
 
-    private HashMap<String, ParameterContainer> storedParameters = new HashMap<String, ParameterContainer>();
+    protected HashMap<String, ParameterContainer> storedParameters = new HashMap<String, ParameterContainer>();
     protected ArrayList<String> storedParameterKeys = new ArrayList<>();
     protected void storeParameters() {
         String key = AssistantUtilities.now();
