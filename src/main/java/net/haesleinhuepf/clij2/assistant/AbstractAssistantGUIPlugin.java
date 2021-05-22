@@ -724,7 +724,7 @@ public abstract class AbstractAssistantGUIPlugin implements ImageListener, PlugI
     protected PopupMenu buildPopup(MouseEvent e) {
         PopupMenu menu = new PopupMenu("CLIJx-Assistant");
 
-        addMenuAction(menu, AssistantUtilities.niceNameWithoutDimShape(this.getName()) + " (" + distributionName(plugin.getClass()) + (show_compatibility?(", " + (getCompatibilityString(plugin.getName()))):"") + ", experimental)", (a) -> {
+        addMenuAction(menu, AssistantUtilities.niceNameWithoutDimShape(this.getName()) + " (" + distributionName(plugin.getClass()) + (show_compatibility?(", " + (getCompatibilityString(plugin.getName()))):"") + ")", (a) -> {
             if (registered_dialog != null) {
                 registered_dialog.show();
             }
