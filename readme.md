@@ -1,17 +1,15 @@
-# CLIJx-Assistant
-[CLIJx-Assistant](https://clij.github.io/assistant) is an intuitive user interface for building custom GPU-accelerated image processing workflows using [CLIJ2](https://clij.github.io) in [Fiji](https://fiji.sc). 
+# CLIJ2-Assistant
+The CLIJ2 Assistant is an intuitive user interface for building custom GPU-accelerated image processing workflows using [CLIJ2](https://clij.github.io) in [Fiji](https://fiji.sc). 
 It visualizes workflows as image date flow graphs while building them. 
 It suggests what to do next and generates scripts and human readable protocols to facilitate reproducible bio-image analysis. 
-These generated scripts also be executed in other platforms such as Matlab, Icy, Python and QuPath.
+These generated scripts also be executed in other platforms such as Matlab and Icy.
 
-If you use CLIJx-assistant, pleace cite it: 
+If you use CLIJ2-assistant, pleace cite it: 
 
 Robert Haase, Akanksha Jain, Stephane Rigaud, Daniela Vorkel, Pradeep Rajasekhar, Theresa Suckert, Talley J Lambert, Juan Nunez-Iglesias, Daniel P Poole, Pavel Tomancak, Eugene W Myers. Interactive design of GPU-accelerated Image Data Flow Graphs and cross-platform deployment using multi-lingual code generation. [BioRxiv preprint](https://www.biorxiv.org/content/10.1101/2020.11.19.386565v1)
 
-CLIJx-Assistant is under development and is subject to change. 
+CLIJ2-Assistant is under beta-testing and will most likely release June 13th 2021. 
 Give it a try and let us know what you think!
-Do not use it for routine research yet. 
-Stay tuned.
 
 ![Image](images/teaser_landscape.gif)
 [Image data source: Daniela Vorkel, Myers lab, CSBD / MPI CBG]
