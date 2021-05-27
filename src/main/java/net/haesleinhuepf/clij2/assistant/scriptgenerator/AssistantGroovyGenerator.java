@@ -98,7 +98,7 @@ public class AssistantGroovyGenerator extends AbstractScriptGenerator {
 
     @Override
     public String header() {
-        return  "// This script contains a CLIJx-assistant workflow. You can load this workflow by \n" +
+        return  "// This script contains a CLIJ2-assistant workflow. You can load this workflow by \n" +
                 "// executing this script in Fijis script editor after choosing the Groovy language.\n" +
                 "// \n" +
                 "//                   This script is not meant to be edited.\n" +
@@ -110,7 +110,7 @@ public class AssistantGroovyGenerator extends AbstractScriptGenerator {
                 "// Generator version: " + VersionUtils.getVersion(this.getClass()) + "\n\n" +
                 "\n\n" +
                 "import ij.IJ;\n" +
-                "import net.haesleinhuepf.clijx.CLIJx;\n\n" +
+                "import net.haesleinhuepf.clij2.CLIJ2;\n\n" +
                 "// clean up first\n" +
                 "IJ.run(\"Close All\");\n\n" +
                 "// Init GPU\n" +
