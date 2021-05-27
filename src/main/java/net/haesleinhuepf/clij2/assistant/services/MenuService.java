@@ -132,7 +132,6 @@ public class MenuService {
         category_names_array = new String[category_names.size()];
         category_names.toArray(category_names_array);
 
-
         AssistantGUIPluginService assistantGUIPluginService = AssistantGUIPluginService.getInstance();
         net.haesleinhuepf.clij.macro.CLIJMacroPluginService clijMacroPluginService = CLIJMacroPluginService.getInstance().getService();
 
@@ -141,13 +140,13 @@ public class MenuService {
         for (String name : clijMacroPluginService.getCLIJMethodNames()) {
             Class incubatorPluginClass = assistantGUIPluginService.getIncubatorPluginClassFromCLIJ2Plugin(clijMacroPluginService.getCLIJMacroPlugin(name));
             if (incubatorPluginClass != null) {
-                names.add(name);
                 CLIJMacroPlugin plugin = clijMacroPluginService.getCLIJMacroPlugin(name);
                 String tags = "";
                 if (plugin instanceof IsCategorized) {
                     tags = ((IsCategorized) plugin).getCategories();
                 }
-                if (plugin.getClass().getPackage().toString().contains(".clij2.") || AssistantUtilities.CLIJxAssistantInstalled()) {
+                if (plugin.getClass().getPackage().toString().contains(".clij2.")) {
+                    names.add(name);
                     names_and_tags.add(name + "," + tags + "," + getCompatibilityString(name));
                 }
             }
