@@ -24,7 +24,7 @@ public class AssistantGroovyGenerator extends AbstractScriptGenerator {
 
         output = output +
                 "// Load image from disc \n" +
-                image1 + " = net.haesleinhuepf.clijx.assistant.utilities.AssistantUtilities.openImage(\"" + filename.replace("\\", "/") + "\");\n" +
+                image1 + " = net.haesleinhuepf.clij2.assistant.utilities.AssistantUtilities.openImage(\"" + filename.replace("\\", "/") + "\");\n" +
                 image1 + ".setC(" + source.getC() + ");\n" +
                 image1 + ".setZ(" + source.getZ() + ");\n" +
                 image1 + ".setT(" + source.getT() + ");\n" +
