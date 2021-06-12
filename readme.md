@@ -75,7 +75,8 @@ Theresa Suckert (OncoRay, TU Dresden),
 
 Furthermore, the constant support by the Image Science and the NEUBIAS communities is fantastic.
  
-This work was supported by the German Federal Ministry of Research and Education (BMBF) under the code 031L0044 (Sysbio II).
+This work was supported by the German Federal Ministry of Research and Education (BMBF) under the code 031L0044 (Sysbio II). 
+We also acknowledge the support by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) under Germany’s Excellence Strategy – EXC2068 - Cluster of Excellence Physics of Life of TU Dresden.
 
 ## Feedback welcome!
 I'm eager to receiving feedback: robert dot haase at tu minus dresden dot de
