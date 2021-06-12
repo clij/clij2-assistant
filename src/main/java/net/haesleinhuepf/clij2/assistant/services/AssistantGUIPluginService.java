@@ -3,6 +3,7 @@ package net.haesleinhuepf.clij2.assistant.services;
 import net.haesleinhuepf.clij.macro.CLIJMacroPlugin;
 import net.haesleinhuepf.clij2.assistant.interactive.handcrafted.*;
 import net.haesleinhuepf.clij2.assistant.interactive.generic.GenericAssistantGUIPlugin;
+import net.haesleinhuepf.clij2.assistant.utilities.AssistantUtilities;
 import net.imagej.ImageJService;
 import org.scijava.Context;
 import org.scijava.InstantiableException;
@@ -180,6 +181,9 @@ public class AssistantGUIPluginService extends AbstractPTService<AssistantGUIPlu
     public Class getIncubatorPluginClassFromCLIJ2Plugin(CLIJMacroPlugin plugin) {
         initializeService();
         for (AssistantGUIPlugin assistantGUIPlugin : plugins) {
+            if (AssistantUtilities.CLIJxAssistantInstalled() && assistantGUIPlugin.getClass().getPackage().toString().contains(".clij2.")) {
+                continue;
+            }
             if (assistantGUIPlugin.canManage(plugin)) {
                 return assistantGUIPlugin.getClass();
             }
@@ -189,6 +193,9 @@ public class AssistantGUIPluginService extends AbstractPTService<AssistantGUIPlu
     public AssistantGUIPlugin getIncubatorPluginFromCLIJ2Plugin(CLIJMacroPlugin plugin) {
         initializeService();
         for (AssistantGUIPlugin assistantGUIPlugin : plugins) {
+            if (AssistantUtilities.CLIJxAssistantInstalled() && assistantGUIPlugin.getClass().getPackage().toString().contains(".clij2.")) {
+                continue;
+            }
             if (assistantGUIPlugin.canManage(plugin)) {
                 try {
                     return assistantGUIPlugin.getClass().newInstance();
