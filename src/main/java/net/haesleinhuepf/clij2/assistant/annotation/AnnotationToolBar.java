@@ -79,12 +79,13 @@ public class AnnotationToolBar extends Dialog {
         long double_click_delta_time = 1000;
 
         Panel content = new Panel();
-        content.setLayout(new FlowLayout());
+        content.setLayout(new BoxLayout(content, 1));
         buttons.clear();
         for (ClassificationClass klass : classes)
         {
             JToggleButton button = new JToggleButton(klass.getName());
             button.setSize(45, 45);
+            button.setMaximumSize(new Dimension(45, 45));
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -133,6 +134,7 @@ public class AnnotationToolBar extends Dialog {
         {
             JToggleButton addNewButton = new JToggleButton("+");
             addNewButton.setSize(45, 45);
+            addNewButton.setMaximumSize(new Dimension(45, 45));
             addNewButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -149,6 +151,7 @@ public class AnnotationToolBar extends Dialog {
         {
             JToggleButton eraseButton = new JToggleButton("E");
             eraseButton.setSize(45, 45);
+            eraseButton.setMaximumSize(new Dimension(45, 45));
             eraseButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -164,6 +167,7 @@ public class AnnotationToolBar extends Dialog {
         {
             slider = new JSlider( JSlider.VERTICAL, 1, 100, thickness);
             slider.setSize(45, 45);
+            slider.setAlignmentX(0.5f);
             slider.setValue((int) (thickness));
             slider.setToolTipText("Thickness");
             slider.addChangeListener(new ChangeListener() {
@@ -180,7 +184,7 @@ public class AnnotationToolBar extends Dialog {
             this.remove(contentPanel);
         }
         contentPanel = content;
-        //contentPanel.setSize(45, slider.getHeight() + slider.getY());
+        contentPanel.setSize(45, slider.getHeight() + slider.getY());
         add(contentPanel);
 
         updateVisualisation();
