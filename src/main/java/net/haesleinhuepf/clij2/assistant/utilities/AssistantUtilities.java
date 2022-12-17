@@ -478,9 +478,10 @@ public class AssistantUtilities {
         advanced_list.add(net.haesleinhuepf.clij2.plugins.CloseIndexGapsInLabelMap.class);
     }
 
-    public static void installTools() {
+    public static void installTools() throws InterruptedException {
         if (AssistantUtilities.class.getPackage().toString().contains(".clij2.")) {
             if (AssistantUtilities.CLIJxAssistantInstalled()) {
+
                 return;
             }
         }
@@ -491,8 +492,11 @@ public class AssistantUtilities {
 
 
         Toolbar.addPlugInTool(new AssistantStartingPointTool());
+        Thread.sleep(500);
         Toolbar.addPlugInTool(new InteractiveZoom());
+        Thread.sleep(500);
         Toolbar.addPlugInTool(new InteractiveWindowPosition());
+        Thread.sleep(500);
         Toolbar.addPlugInTool(new AnnotationTool());
 
         ignoreEvent = false;
